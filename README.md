@@ -22,6 +22,8 @@ Install
 
 Install the binary version first, and run it. This installs java and sets up the ~/.bashrc
 
+Once Binary application runs, then compile and run from source
+
 ```
 sudo apt install npm
 git clone git@github.com:CommonWealthRobotics/BowlerGame.git
