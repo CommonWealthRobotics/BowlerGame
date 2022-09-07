@@ -68,6 +68,7 @@ if ! [ "$SCRIPT" = "$HOME/bin" ]; then
 fi
 
 if (! test -e $ICON) then
+	mkdir -p $HOME/bin/$EXE_NAME/
 	wget https://github.com/CommonWealthRobotics/$EXE_NAME/releases/latest/download/splash.png -O $ICON
 fi
 set -e
