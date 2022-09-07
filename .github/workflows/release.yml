@@ -52,7 +52,7 @@ jobs:
                asset_path: build/libs/BowlerGame.jar
                asset_name: BowlerGame.jar
                asset_content_type: application/jar  
-      - name: upload BowlerStudio Icon
+      - name: upload  Icon
         uses: actions/upload-release-asset@v1
         env:
             GITHUB_TOKEN: ${{ github.token }}
@@ -61,7 +61,7 @@ jobs:
                asset_path: ./splash.png
                asset_name: splash.png
                asset_content_type: application/binary
-      - name: upload BowlerStudio artifact
+      - name: upload Bash Script
         uses: actions/upload-release-asset@v1
         env:
                GITHUB_TOKEN: ${{ github.token }}

@@ -7,7 +7,7 @@ SCRIPT_EXPECTED=$HOME/bin/$EXE_NAME
 DESKTOP_FILE=$HOME/bin/$EXE_NAME.desktop
  
 SCRIPT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-ICON=$HOME/bin/splash.png
+ICON=$HOME/bin/$EXE_NAME/splash.png
 
 if (! test -e $DESKTOP_FILE) then
 	echo "[Desktop Entry]
