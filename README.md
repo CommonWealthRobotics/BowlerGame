@@ -11,3 +11,22 @@ wget https://github.com/CommonWealthRobotics/BowlerGame/releases/latest/download
 chmod +x ~/bin/BowlerGame
 ~/bin/BowlerGame
 ```
+
+# Developer
+
+Assumed you have set up SSH keys with GitHub
+
+Running Ubuntu 22.04
+
+Install
+
+Install the binary version first, and run it. This installs java and sets up the ~/.bashrc
+
+```
+sudo apt install npm
+git clone git@github.com:CommonWealthRobotics/BowlerGame.git
+cd BowlerGame
+./gradlew spotlessApply
+./gradlew shadowJar
+java -jar build/libs/BowlerGame.jar
+```

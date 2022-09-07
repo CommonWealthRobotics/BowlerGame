@@ -1,0 +1,35 @@
+# test
+name: Publish package to GitHub Packages
+on:  
+   push:
+       branches:
+         - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest 
+    permissions: 
+      contents: write
+      packages: write 
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          java-version: '8'
+          distribution: 'zulu'
+      - name: Validate Gradle wrapper
+        uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
+      - name: Set output
+        id: vars
+        run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
+      - name: Check output
+        env:
+          VERSION_SEMVER: ${{ steps.vars.outputs.tag }}
+        run: |
+          echo $VERSION_SEMVER
+          echo ${{ steps.vars.outputs.tag }}
+ 
+    - name: Stylecheck spotlessJavaCheck
+      run: ./gradlew spotlessJavaCheck
+    - name: Compile
+      run: ./gradlew shadowJar
