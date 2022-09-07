@@ -29,7 +29,7 @@ jobs:
           echo $VERSION_SEMVER
           echo ${{ steps.vars.outputs.tag }}
  
-    - name: Stylecheck spotlessJavaCheck
-      run: ./gradlew spotlessJavaCheck
-    - name: Compile
-      run: ./gradlew shadowJar
+      - name: Stylecheck spotlessJavaCheck
+        run: ./gradlew spotlessJavaCheck
+      - name: Compile
+        run: ./gradlew shadowJar
