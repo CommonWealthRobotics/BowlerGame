@@ -6,7 +6,7 @@ on:
          - main
 
 jobs:
-  compiletest:
+  windowsTest:
     runs-on: windows-latest 
     permissions: 
       contents: write
@@ -27,7 +27,6 @@ jobs:
           VERSION_SEMVER: ${{ steps.vars.outputs.tag }}
         run: |
           echo $VERSION_SEMVER
-          echo ${{ steps.vars.outputs.tag }}
       - name: Pull a JavaFX JDK
         run: wget http://static.azul.com/zulu/bin/zulu8.44.0.13-ca-fx-jdk8.0.242-win_x64.zip
       - name: Set Java
