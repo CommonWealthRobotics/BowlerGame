@@ -35,6 +35,10 @@ jobs:
         with:
           java-version: 1.8
           jdkFile: ./zulu8.44.0.13-ca-fx-jdk8.0.242-linux_x64.tar.gz
+      - name: Java Check
+        run: |
+             echo $JAVA_HOME
+             java -version
       - name: Stylecheck spotlessJavaCheck
         run: ./gradlew spotlessJavaCheck
       - name: Compile
