@@ -93,7 +93,21 @@ if(JavaVersion.current() != JavaVersion.VERSION_1_8){
 
 group='com.neuronrobotics'
 archivesBaseName='bowler-game'
-version = System.getenv("VERSION_SEMVER")
+def stdout = new ByteArrayOutputStream()
+exec {
+	commandLine 'git', 'describe', '--tags'
+	standardOutput = stdout
+}
+version=stdout.toString().trim()
+//version=details.lastTag+(details.commitDistance==0?"-release":"-canadate-"+details.commitDistance+"-"+details.gitHash)
+
+task versionTxt()  {
+	doLast {
+		new File(projectDir, "src/main/resources/buildinfo.txt").text = version
+		println "Updating version file to "+version
+	}
+}
+
 
 nexusStaging {
 	packageGroup = 'com.neuronrobotics'
