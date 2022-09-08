@@ -43,7 +43,7 @@ spotless {
 	googleJavaFormat() // has its own section below
 	eclipse()          // has its own section below
 
-	licenseHeader '/* (C) $YEAR */' // or licenseHeaderFile
+	licenseHeaderFile 'LICENSE' // or licenseHeaderFile
 	}
 }
 
