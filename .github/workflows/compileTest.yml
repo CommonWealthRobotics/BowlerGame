@@ -39,7 +39,7 @@ jobs:
       - name: Compile
         run: ./gradlew shadowJar
         
-      - name: Compile
+      - name: Installer Build
         run: bash installer/windows/win-installer.sh
   compiletest:
     runs-on: ubuntu-latest 
