@@ -36,7 +36,7 @@ jobs:
           java-version: 1.8
           jdkFile: ./zulu8.44.0.13-ca-fx-jdk8.0.242-linux_x64.tar.gz
       - name: Compile 
-        run: ./gradlew shadowJar
+        run: ./gradlew shadowJar --scan
              
       - name: Make gitHub release
         uses: actions/create-release@v1
