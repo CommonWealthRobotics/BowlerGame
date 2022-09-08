@@ -43,7 +43,8 @@ jobs:
         run: ./gradlew spotlessJavaCheck
       - name: Compile
         run: ./gradlew shadowJar
-             
+        env:
+            CI: true 
       - name: Make gitHub release
         uses: actions/create-release@v1
         id: create_release
