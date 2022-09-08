@@ -6,6 +6,41 @@ on:
          - main
 
 jobs:
+  windowsTest:
+    runs-on: windows-latest 
+    permissions: 
+      contents: write
+      packages: write 
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          java-version: '8'
+          distribution: 'zulu'
+      - name: Validate Gradle wrapper
+        uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
+      - name: Set output
+        id: vars
+        run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
+      - name: Check output
+        env:
+          VERSION_SEMVER: ${{ steps.vars.outputs.tag }}
+        run: |
+          echo $VERSION_SEMVER
+      - name: Pull a JavaFX JDK
+        run: curl http://static.azul.com/zulu/bin/zulu8.44.0.13-ca-fx-jdk8.0.242-win_x64.zip 
+      - name: Set Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+          jdkFile: ./zulu8.44.0.13-ca-fx-jdk8.0.242-win_x64.zip
+      - name: Stylecheck spotlessJavaCheck
+        run: ./gradlew spotlessJavaCheck
+      - name: Compile
+        run: ./gradlew shadowJar
+        
+      - name: Compile
+        run: bash installer/windows/win-installer.sh
   compiletest:
     runs-on: ubuntu-latest 
     permissions: 
