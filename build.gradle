@@ -172,6 +172,7 @@ publishing {
 }
 
 java {
+	dependsOn versionTxt
 	withJavadocJar()
 	withSourcesJar()
 }
@@ -188,6 +189,7 @@ javadoc {
 }
 
 shadowJar {
+	dependsOn versionTxt
 	zip64 true
 mainClassName = 'com.commonwealthrobotics.ui.Main'
 baseName = 'BowlerGame'
